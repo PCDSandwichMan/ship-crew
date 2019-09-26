@@ -18,7 +18,7 @@ const setAuthHeader = token => {
 export const addInfo = userData => dispatch => {
   // dispatch({ type: constants.TOGGLE_LOADING });
   axios
-    .post('http://localhost:5000/login', userData)
+    .post('/login', userData)
     .then(res => {
       setAuthHeader(res.data.token);
       dispatch({
@@ -50,7 +50,7 @@ export const createUser = userData => dispatch => {
   // dispatch({ type: constants.TOGGLE_LOADING });
   dispatch({ type: constants.CLEAR_ERRORS });
   axios
-    .post('http://localhost:5000/user/add', userData)
+    .post('/user/add', userData)
     .then(res => {
       dispatch({
         type: constants.UI_ALERTS,
@@ -75,7 +75,7 @@ export const getUserInfo = token => dispatch => {
     'token'
   );
   axios
-    .post('http://localhost:5000/getUserInfo', {
+    .post('/getUserInfo', {
       token: localStorage.getItem('token').split(' ')[1]
     })
     .then(userInfo => {
@@ -108,7 +108,7 @@ export const editUserInfo = userInput => dispatch => {
 // // - ================= Upload Profile Picture ==============
 // export const uploadProfilePicture = (username, formData) => dispatch => {
 //   axios
-//     .post(`http://localhost:5000/${username}/add-image`, formData, {
+//     .post(`/${username}/add-image`, formData, {
 //       headers: {
 //         'Content-Type': 'multipart/form-data'
 //       }
@@ -140,7 +140,7 @@ export const sendEditedInfo = userInput => dispatch => {
 
   console.log(userInput.userPicture);
   axios
-    .put(`http://localhost:5000/${currentUsername}/update`, {
+    .put(`/${currentUsername}/update`, {
       username,
       email,
       bio,
@@ -163,7 +163,7 @@ export const sendEditedInfo = userInput => dispatch => {
 // - ================= Password Recovery Form ==============
 export const recoverPassword = credentials => dispatch => {
   axios
-    .post('http://localhost:5000/recover-password', {
+    .post('/recover-password', {
       username: credentials.username,
       email: credentials.email,
       password: credentials.password,
@@ -186,7 +186,7 @@ export const recoverPassword = credentials => dispatch => {
 // - ================= Get Notifications ==============
 export const fetchNotifications = userInfo => dispatch => {
   axios
-    .get(`http://localhost:5000/${userInfo.username}/notifications`)
+    .get(`/${userInfo.username}/notifications`)
     .then(res => {
       dispatch({
         type: constants.FETCH_NOTIFICATIONS,
@@ -201,7 +201,7 @@ export const markAsRead = notificationInfo => dispatch => {
   console.log(notificationInfo);
   axios
     .get(
-      `http://localhost:5000/${notificationInfo.username}/${notificationInfo.id}`
+      `/${notificationInfo.username}/${notificationInfo.id}`
     )
     .then(res => {
       dispatch({
