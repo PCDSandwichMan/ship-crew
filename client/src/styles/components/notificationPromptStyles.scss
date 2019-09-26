@@ -1,0 +1,46 @@
+.hide-prompt {
+  display: none;
+}
+
+#prompt {
+  position: relative;
+  background: #fafafa;
+  box-shadow: 0.5px 0.5px 3px #444;
+  border-radius: 5%;
+  padding: 10px;
+  margin: 10px 0;
+  transition: all 50ms ease;
+  &:hover {
+    transform: scale(1.01);
+    background: rgba(247, 3, 3, 0.603);
+    cursor: pointer;
+  }
+}
+
+#prompt__info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: end;
+  padding: 2px 5px;
+}
+
+#prompt__status {
+  font-size: 0.7rem;
+}
+
+#prompt__time {
+  font-size: 0.7rem;
+}
+
+#prompt__name {
+  font-weight: 500;
+}
+
+#prompt__action {
+  font-size: 0.7rem;
+}
+
+#prompt__post {
+  font-size: 1.3rem;
+}

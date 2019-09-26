@@ -1,0 +1,245 @@
+.background-blur {
+  filter: blur(4px);
+}
+
+#modal-overlay {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background: #00000062;
+}
+
+#modal-body {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // TODO Let this change dynamically after setup
+  height: 75%;
+  width: 50%;
+  // TODO Let this change dynamically after setup
+  background: white;
+  color: #555;
+}
+
+#modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  transition: all 100ms ease-in;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: #ec1c1caf;
+  }
+}
+
+// - NEW POST
+#newPost-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width: 90%;
+}
+
+#newPost-header {
+  margin-bottom: 20px;
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+  }
+}
+
+#newPost__presetInfo {
+  margin: 0 auto 15px 0;
+  h2 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #65c5ee;
+  }
+  h4 {
+    margin: 0;
+  }
+}
+
+#newPost__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  textarea {
+    background: rgb(231, 231, 231);
+    width: 90%;
+    height: 150px;
+    padding: 3px 8px;
+    color: rgb(32, 32, 32);
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+  button {
+    margin: 10px 35px 0 auto;
+    padding: 5px 10px;
+    font-size: 1rem;
+    color: #238fbd;
+    border-radius: 5%;
+    background: #00000000;
+    border: 2px solid #238fbd;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      transform: scale(1.05);
+      color: #65c5ee;
+      border-color: #252525;
+    }
+  }
+}
+
+// - VIEW COMMENTS ON POST
+#comments-wrapper {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width: 100%;
+}
+
+#comments-container {
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0 0;
+  height: 80%;
+  width: 100%;
+  section {
+    margin: 10px auto;
+    width: 90%;
+  }
+}
+
+#comments_form {
+  //   position: fixed;
+  //   top: 0;
+  //   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  input {
+    width: 100%;
+    line-height: 2rem;
+    font-size: 1.3rem;
+    padding: 0 5px;
+    border: 2px solid #65c5ee;
+    box-shadow: 1px 1px 2px #888;
+  }
+  button {
+    margin: 5px 0 0 auto;
+    padding: 5px 10px;
+    font-size: 1rem;
+    color: #2393c4;
+    border-radius: 5%;
+    background: #00000000;
+    border: 2px solid #65c5ee;
+    transition: all 50ms ease-in-out;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+      transform: scale(0.95);
+      color: #238fbd;
+      border-color: #238fbd;
+    }
+  }
+}
+
+#comment {
+  width: 100%;
+  height: 80px;
+  margin: 5px auto;
+  background: #82cae9;
+  box-shadow: 2px 2px 4px #555;
+  h3 {
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  h5 {
+    text-align: center;
+    font-size: 1rem;
+  }
+}
+
+// - User Profile Edit
+#profile-container,
+#profile-info {
+  width: 100%;
+}
+
+#profile-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    rgba(63, 197, 231, 0.651),
+    rgba(19, 56, 221, 0.61)
+  );
+}
+
+#profile-info {
+  height: 100%;
+}
+
+#info__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  input {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin: 5px;
+    padding: 0 10px;
+    width: 70%;
+  }
+  textarea {
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    margin: 5px;
+    height: 150px;
+    width: 70%;
+  }
+  button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    color: #65c5ee;
+    border-radius: 5%;
+    background: #00000000;
+    border: 2px solid #65c5ee;
+    transition: all 50ms ease-in-out;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+      transform: scale(0.95);
+      color: #fff;
+      border-color: #fff;
+    }
+  }
+}

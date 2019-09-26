@@ -1,0 +1,48 @@
+#home-page {
+  width: 100vw;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow-x: hidden;
+}
+
+#home-page__body {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+}
+
+#body__loading {
+  margin: 40vh 15vw;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  font-weight: 100;
+}
+
+#home__flashMessage {
+  z-index: 2;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(226, 20, 20, 0.658);
+  padding: 20px 30px;
+  border-radius: 2%;
+  h3 {
+    color: white;
+    text-transform: uppercase;
+  }
+  i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    font-size: 1.2rem;
+    padding: 5px;
+    transition: all 200ms ease;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+      color: #87bdf0;
+    }
+  }
+}
