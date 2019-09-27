@@ -42,6 +42,11 @@
       "last 1 safari version"
     ]
   },
+  "root": "build/",
+  "clean_urls": false,
+  "routes": {
+    "/**": "index.html"
+  },
   "proxy": "http://localhost:8000",
   "homepage": "https://asdfasdfed.herokuapp.com"
 }
