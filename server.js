@@ -48,15 +48,15 @@ db.once('open', () => {
   // - Route Assign
   app.use('/', dataRoute);
   app.use('/', userRoute);
-  // * handles 404
-  app.use((req, res, next) => {
-    res.status(404);
+  // // * handles 404
+  // app.use((req, res, next) => {
+  //   res.status(404);
 
-    // respond with json
-    if (req.accepts('json')) {
-      res.send({ error404: 'invalid call to API' });
-    }
-    next();
+  //   // respond with json
+  //   if (req.accepts('json')) {
+  //     res.send({ error404: 'invalid call to API' });
+  //   }
+  //   next();
   });
 
   
