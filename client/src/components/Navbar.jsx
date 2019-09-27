@@ -74,7 +74,7 @@ function Navbar(props) {
         </li>
         <li id="list__option">
           <i
-            class="fa fa-sign-out"
+            className="fa fa-sign-out"
             aria-hidden="true"
             onClick={props.logoutUser}
            />
