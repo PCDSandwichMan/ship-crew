@@ -187,7 +187,6 @@ function Login(props) {
 Login.propTypes = {
   addUserInfo: PropTypes.func.isRequired,
   newUser: PropTypes.func.isRequired,
-  errors: PropTypes.object,
   alerts: PropTypes.object
 };
 

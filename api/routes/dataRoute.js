@@ -1,4 +1,5 @@
 const router = require('express').Router();
+    // "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm rebuild node-sass --prefix client && npm run build --prefix client"
 
 const jwtAuth = require('../middleware/jwtAuth');
 const {

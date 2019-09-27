@@ -77,7 +77,6 @@ function Home(props) {
 
 const mapStateToProps = state => {
   return {
-    errors: state.UI.errors,
     loading: state.UI.loading,
     userInfo: state.user,
     posts: state.data.allPosts,

@@ -8,7 +8,18 @@ const app = express();
 const db = mongoose.connection;
 const config = require('./util/config');
 
-app.use(express.static('./client'));
+
+
+// ! Heroku Stuff
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+// Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
 // - Server Config
 app.use(express.json());
 app.use(express.urlencoded({ limit: '10mb', extended: false }));
@@ -44,14 +55,7 @@ db.once('open', () => {
     next();
   });
 
-  // ! Heroku Stuff
-  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
-
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-  }
+  
 
   // - Server Connection
   app.listen(config.PORT, () =>
