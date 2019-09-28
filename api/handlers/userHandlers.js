@@ -174,8 +174,23 @@ exports.loginUser = async (req, res) => {
 exports.resetPassword = async (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
   if (!username || !email || !password || !confirmPassword) {
-    return res.status(400).json({ passwordReset: 'please include all info' });
+    // - Used to pass entry status to flash alert
+    const checkFields = `Username: ${
+      !username ? 'Missing' : 'Not Missing'
+    } || Password: ${
+      !password ? 'Missing' : 'Not Missing'
+    } || Confirmed Password: ${
+      !confirmPassword ? 'Missing' : 'Not Missing'
+    } || Email: ${!email ? 'Missing' : 'Not Missing'}`;
+
+    return res
+      .status(400)
+      .json({
+        passwordReset: 'please include all info',
+        entryStatus: checkFields
+      });
   }
+
   if (password !== confirmPassword) {
     return res.status(400).json({ passwordReset: 'passwords must match' });
   }
@@ -423,7 +438,6 @@ exports.markNotification = async (req, res) => {
   try {
     foundUser = await User.findOne({ username });
     foundNotification = await Notification.findOne({ _id: id });
-    
   } catch (err) {
     console.log(err);
     return res

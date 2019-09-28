@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { recoverPassword } from '../redux/actions/userActions';
+import { clearErrors } from '../redux/actions/dataActions';
 import '../styles/Recover/forgotPassword.scss';
 
 function ForgotPassword(props) {
@@ -21,13 +22,16 @@ function ForgotPassword(props) {
 
   const handleSendRecover = e => {
     e.preventDefault();
+    props.clearErrors();
     props.recoverPassword(recoveryFormInfo);
   };
 
   return (
     <div id="recover-page">
       <div id="recover__container">
-        <a href="/">Home</a>
+        <a href="/" onClick={props.clearErrors()}>
+          Home
+        </a>
         {props.errors.length > 0
           ? props.errors.map(err => (
               <div id="recover__error">
@@ -77,7 +81,8 @@ const mstp = state => ({
 });
 
 const matp = {
-  recoverPassword
+  recoverPassword,
+  clearErrors
 };
 
 export default connect(
