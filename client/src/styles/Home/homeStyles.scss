@@ -46,3 +46,12 @@
     }
   }
 }
+
+
+// - media queries 
+@media only screen and (max-device-width: 836px) {
+  #home-page__body {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}

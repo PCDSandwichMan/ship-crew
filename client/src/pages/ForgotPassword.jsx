@@ -33,8 +33,8 @@ function ForgotPassword(props) {
           Home
         </a>
         {props.errors.length > 0
-          ? props.errors.map(err => (
-              <div id="recover__error">
+          ? props.errors.map((err, key) => (
+              <div key={key} id="recover__error">
                 <h5>{err}</h5>
                 <hr />
               </div>

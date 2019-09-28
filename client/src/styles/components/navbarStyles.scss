@@ -79,7 +79,6 @@
   color: black;
   background: #3095f37c;
   box-shadow: 3px 3px 3px #d1d1d1;
-  
 }
 
 #modal__arrow {
@@ -90,4 +89,51 @@
   height: 30px;
   width: 30px;
   background: #00000000;
+}
+
+#hamburger-menu {
+  display: none;
+}
+
+#responsive-nav {
+  display: none;
+}
+
+.show {
+  transform: translateX(0%) !important;
+}
+
+// - Media Queries
+@media only screen and (max-device-width: 698px) {
+  #hamburger-menu {
+    display: block;
+    position: absolute;
+    font-size: 1.5rem;
+    top: 14px;
+    right: 20px;
+  }
+
+  .non-responsive > li > i {
+    display: none !important;
+  }
+
+  #notifications__modal {
+    top: 80px;
+    right: -74px;
+  }
+
+  #responsive-nav {
+    display: block;
+    position: absolute;
+    right: -10px;
+    bottom: -40px;
+    background-color: #0d83e4;
+    border-radius: 5%;
+    padding: 14px;
+    transform: translateX(100%);
+    transition: all 400ms ease-in-out;
+    #nav__list {
+      width: 20rem;
+    }
+  }
 }

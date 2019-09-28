@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { displayModal } from '../redux/actions/dataActions';
 import { editUserInfo, logoutUser } from '../redux/actions/userActions';
@@ -8,6 +8,18 @@ import navPic from '../images/relationship.svg';
 import NotificationPrompt from './NotificationPrompt';
 
 function Navbar(props) {
+  useEffect(() => {
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const responsiveNav = document.getElementById('responsive-nav');
+    const prompt = document.getElementById('notifications__modal');
+    const bell = document.getElementById('notification-bell');
+    hamburgerMenu.addEventListener('click', () => {
+      responsiveNav.classList.toggle('show');
+      prompt.classList.remove('show-modal');
+      bell.classList.remove('bell-color');
+    });
+  });
+
   const handleAddPost = () => {
     props.displayModal({
       active: true,
@@ -34,7 +46,7 @@ function Navbar(props) {
         </a>
         <h1>Ship crew</h1>
       </div>
-      <ul id="nav__list">
+      <ul id="nav__list" className="non-responsive">
         {/* // - add post  */}
         <li id="list__option">
           <i
@@ -56,7 +68,6 @@ function Navbar(props) {
             onClick={handlePromptDisplay}
           />
           {/* // - Notifications Modal */}
-          <div id="modal__arrow" />
           <div id="notifications__modal">
             {/* // - Notification Prompts */}
             {props.notifications.slice(0, 3).map((notification, i) => (
@@ -77,9 +88,57 @@ function Navbar(props) {
             className="fa fa-sign-out"
             aria-hidden="true"
             onClick={props.logoutUser}
-           />
+          />
         </li>
       </ul>
+      <i id="hamburger-menu" className="fa fa-bars" aria-hidden="true"></i>
+      <div id="responsive-nav">
+        <ul id="nav__list">
+          {/* // - add post  */}
+          <li id="list__option">
+            <i
+              className="fa fa-plus"
+              aria-hidden="true"
+              onClick={handleAddPost}
+            />
+          </li>
+          {props.match.path === '/home' ? null : (
+            <li id="list__option">
+              <i className="fa fa-home" aria-hidden="true" />
+            </li>
+          )}
+          <li className="notifications" id="list__option">
+            <i
+              className="fa fa-bell"
+              aria-hidden="true"
+              id="notification-bell"
+              onClick={handlePromptDisplay}
+            />
+            {/* // - Notifications Modal */}
+            <div id="notifications__modal">
+              {/* // - Notification Prompts */}
+              {props.notifications.slice(0, 3).map((notification, i) => (
+                <NotificationPrompt key={i} notification={notification} />
+              ))}
+              {/* // - Notification Prompts */}
+            </div>
+          </li>
+          <li id="list__option">
+            <i
+              className="fa fa-user-circle"
+              aria-hidden="true"
+              onClick={handleViewProfile}
+            />
+          </li>
+          <li id="list__option">
+            <i
+              className="fa fa-sign-out"
+              aria-hidden="true"
+              onClick={props.logoutUser}
+            />
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

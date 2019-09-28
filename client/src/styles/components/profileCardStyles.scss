@@ -119,3 +119,11 @@
     text-decoration: none;
   }
 }
+
+// - Media Queries
+@media only screen and (max-device-width: 950px) {
+  #profile {
+    width: 300px;
+    margin: 2vw;
+  }
+}

@@ -108,7 +108,7 @@ export const createComment = userInfo => dispatch => {
       postId
     })
     .then(res => {
-      // - replace with commetn refresh
+      // - replace with commetent refresh
       axios
         .get(`/get-comments/${postId}`)
         .then(res => {

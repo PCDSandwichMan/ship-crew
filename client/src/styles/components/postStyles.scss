@@ -2,7 +2,6 @@
   background-color: #fff;
   box-shadow: 2px 2px 2px #999;
   display: flex;
-  // height: 140px;
   width: 48vw;
   margin: 30px;
 }
@@ -91,5 +90,26 @@
     color: red;
     transform: scale(1.1);
     cursor: pointer;
+  }
+}
+
+
+// - Media Queries
+@media only screen and (max-device-width: 950px) {
+  #post {
+    width: 58vw;
+    margin: 30px 20px;
+  }
+}
+
+@media only screen and (max-device-width: 794px) {
+  #post {
+    width: 90vw;
+  }
+}
+
+@media only screen and (max-device-width: 542px) {
+  #post__image-wrapper {
+    display: none;
   }
 }
