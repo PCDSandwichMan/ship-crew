@@ -61,7 +61,7 @@ export const createUser = userData => dispatch => {
       console.log(err);
       dispatch({
         type: constants.ADD_ERROR,
-        payload: Object.values(err.response.data)
+        payload: Object.values(err.response.data.errors)
       });
     });
 };
