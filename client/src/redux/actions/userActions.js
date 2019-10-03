@@ -31,7 +31,7 @@ export const addInfo = userData => dispatch => {
     .catch(err => {
       dispatch({
         type: constants.ADD_ERROR,
-        payload: Object.values(err.response.data)
+        payload: Object.values(err.response.data.errors)
       });
     });
 };
