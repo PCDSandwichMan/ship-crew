@@ -22,20 +22,25 @@ function ForgotPassword(props) {
 
   const handleSendRecover = e => {
     e.preventDefault();
-    props.clearErrors();
     props.recoverPassword(recoveryFormInfo);
   };
 
   return (
     <div id="recover-page">
       <div id="recover__container">
-        <a href="/" onClick={props.clearErrors()}>
-          Home
-        </a>
+        <a href="/">Home</a>
         {props.errors.length > 0
           ? props.errors.map((err, key) => (
               <div key={key} id="recover__error">
                 <h5>{err}</h5>
+                <hr />
+              </div>
+            ))
+          : null}
+        {Object.values(props.alerts).length > 0
+          ? Object.values(props.alerts).map((alert, key) => (
+              <div key={key} id="recover__error">
+                <h5 style={{ color: 'green' }}>{alert}</h5>
                 <hr />
               </div>
             ))
@@ -77,7 +82,8 @@ function ForgotPassword(props) {
 }
 
 const mstp = state => ({
-  errors: state.UI.errors
+  errors: state.UI.errors,
+  alerts: state.UI.alerts
 });
 
 const matp = {

@@ -2,7 +2,7 @@ import constants from '../types';
 
 let initialState = {
   errors: [],
-  alerts: {},
+  alerts: [],
   loading: true,
   refreshQue: false,
   modalActive: false,
@@ -33,12 +33,10 @@ const uiReducer = (state = initialState, { type, payload }) => {
         ...payload
       };
     case constants.ADD_ERROR:
-      console.log(payload)
+      console.log(payload);
       return {
         ...state,
-        errors: [
-          ...payload
-        ]
+        errors: [...payload]
       };
     case constants.CLEAR_ERRORS:
       return {

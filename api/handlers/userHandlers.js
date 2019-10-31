@@ -183,12 +183,10 @@ exports.resetPassword = async (req, res) => {
       !confirmPassword ? 'Missing' : 'Not Missing'
     } || Email: ${!email ? 'Missing' : 'Not Missing'}`;
 
-    return res
-      .status(400)
-      .json({
-        passwordReset: 'please include all info',
-        entryStatus: checkFields
-      });
+    return res.status(400).json({
+      passwordReset: 'please include all info',
+      entryStatus: checkFields
+    });
   }
 
   if (password !== confirmPassword) {
@@ -224,6 +222,12 @@ exports.resetPassword = async (req, res) => {
             password: hashedPassword
           }
         );
+        // ? experimental
+        if (updatePassword) {
+          res
+            .status(201)
+            .json({ passwordReset: 'password reset please sign in' });
+        }
       });
     });
     const foundUser1 = await User.find({ username });

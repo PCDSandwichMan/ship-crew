@@ -11,6 +11,8 @@ import Post from '../components/Post';
 import Modal from '../components/Modal';
 import '../styles/Home/homeStyles.scss';
 
+
+
 function Home(props) {
   useEffect(() => {
     props.getAllPosts();

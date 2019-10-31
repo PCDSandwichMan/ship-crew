@@ -31,18 +31,21 @@ export const addInfo = userData => dispatch => {
     .catch(err => {
       dispatch({
         type: constants.ADD_ERROR,
-        payload: Object.values(err.response.data.errors)
+        payload:
+          err.response.status === 404
+            ? ['server is undergoing maintenance']
+            : Object.values(err.response.data)
       });
     });
 };
 
-// TODO finish me and check on home page
 // - =========== SIGN IN AND ASSIGN TOKEN ===============
 export const logoutUser = () => dispatch => {
+  console.log('this ran too');
   localStorage.removeItem('token');
   delete axios.defaults.headers.common['Authorization'];
-  dispatch({ type: constants.LOGOUT_USER });
   window.location.href = '/';
+  dispatch({ type: constants.LOGOUT_USER });
 };
 
 // - ========== CREATE USER ===========
@@ -58,10 +61,10 @@ export const createUser = userData => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err.response);
       dispatch({
         type: constants.ADD_ERROR,
-        payload: Object.values(err.response.data.errors)
+        payload: Object.values(err.response.data)
       });
     });
 };
@@ -69,7 +72,10 @@ export const createUser = userData => dispatch => {
 // - Home page
 // - ================= GET USER INFO ==============
 export const getUserInfo = token => dispatch => {
-  // dispatch({ type: constants.TOGGLE_LOADING });
+  if (localStorage.getItem('token') === null) {
+    return (window.location.href = '/');
+  }
+
   dispatch({ type: constants.CLEAR_ERRORS });
   axios.defaults.headers.common['Authorization'] = localStorage.getItem(
     'token'
@@ -170,12 +176,18 @@ export const recoverPassword = credentials => dispatch => {
       confirmPassword: credentials.confirmPassword
     })
     .then(res => {
+      console.log(res);
       dispatch({
         type: constants.LOGIN_RECOVER,
         payload: res
       });
+      dispatch({
+        type: constants.UI_ALERTS,
+        payload: res.data
+      });
     })
     .catch(err => {
+      // console.log(err.response)
       dispatch({
         type: constants.ADD_ERROR,
         payload: Object.values(err.response.data)
@@ -198,7 +210,6 @@ export const fetchNotifications = userInfo => dispatch => {
 
 // - ================= Mark Notifications As Read ==============
 export const markAsRead = notificationInfo => dispatch => {
-  console.log(notificationInfo);
   axios
     .get(
       `/${notificationInfo.username}/${notificationInfo.id}`

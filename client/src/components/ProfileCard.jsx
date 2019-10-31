@@ -2,6 +2,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getUserInfo, editUserInfo } from '../redux/actions/userActions';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 import '../styles/components/profileCardStyles.scss';
 import profilePlaceholder from '../images/profilePlaceholder.png';
@@ -31,15 +33,17 @@ function ProfileCard(props) {
         <div id="profile__info-wrapper">
           <span id="profile__text-location">
             <i className="fa fa-map-marker" aria-hidden="true" />
-            <h4>{props.location}</h4>
+            <h4>{props.location ? props.location : 'Sesame Street'}</h4>
           </span>
           <span id="profile__text-website">
             <i className="fa fa-link" aria-hidden="true" />
-            <a href="/home">{props.website}</a>
+            <a href="/home">{props.website ? props.website : 'yourwebsitehere.com'}</a>
           </span>
           <span id="profile__text-created">
             <i className="fa fa-calendar" aria-hidden="true" />
-            <h4>{props.createdAt}</h4>
+            <h4>
+              <Moment format="dddd D MMM YYYY">{props.createdAt}</Moment>
+            </h4>
           </span>
         </div>
       </div>

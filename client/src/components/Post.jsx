@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 import {
   deletePost,
@@ -43,7 +45,9 @@ function Post(props) {
       </div>
       <div id="post__text">
         <h3>{props.username}</h3>
-        <small>{props.createdAt}</small>
+        <small>
+          <Moment format="D MMM YYYY">{props.createdAt}</Moment>
+        </small>
         <div id="post__text-body">
           <h5>{props.body}</h5>
         </div>
